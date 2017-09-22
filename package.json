@@ -1,6 +1,6 @@
 {
   "name": "datasources-seeder-mongoose",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Driver mongoose for datasources-seeder",
   "main": "index.js",
   "scripts": {
