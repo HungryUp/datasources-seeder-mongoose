@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const { promisify } = require('util');
 const fs = require('fs');
 const { join } = require('path');
+
 const readdir = promisify(fs.readdir);
 
 module.exports = {
@@ -13,18 +14,16 @@ module.exports = {
         const [modelName] = file.split('.');
         const json = require(jsonPath);
         const Model = mongoose.model(modelName);
-        return Promise.all(
-          json.map(document => {
-            const object = new Model(document);
-            return object.save()
-          })
-        );
+        return Promise.all(json.map((document) => {
+          const object = new Model(document);
+          return object.save();
+        }));
       }));
   },
 
   async init({ uri, models, destroyOld = false } = {}) {
     mongoose.Promise = Promise;
-    mongoose.connection.on('error', console.error);
+    mongoose.connection.on('error', (e) => { throw e; });
     const db = await mongoose.connect(uri);
     if (destroyOld) {
       await mongoose.connection.db.dropDatabase();
@@ -38,7 +37,7 @@ module.exports = {
     return db;
   },
 
-  async end() {
+  async end() {
     return mongoose.disconnect();
-  }
+  },
 };
