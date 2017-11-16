@@ -6,7 +6,7 @@ const { join } = require('path');
 const readdir = promisify(fs.readdir);
 
 module.exports = function ({
-  path, uri, models, destroyOld = false, alreadyConnected = false,
+  path, uri, models, destroyOld = false,
 }, workingDir) {
   return {
     async seed(db, contents = []) {
@@ -30,7 +30,7 @@ module.exports = function ({
         mongoose.connection.on('error', (e) => { throw e; });
         await mongoose.connect(uri);
       }
-      const db = mongoose.connection.db; // eslint-disable-line prefer-destructuring
+      const db = mongoose.connection.db;
       if (destroyOld) {
         await db.dropDatabase();
       }

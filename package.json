@@ -1,6 +1,6 @@
 {
   "name": "datasources-seeder-mongoose",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Driver mongoose for datasources-seeder",
   "main": "index.js",
   "scripts": {
@@ -20,11 +20,11 @@
   },
   "homepage": "https://github.com/HungryUp/datasources-seeder-mongoose#readme",
   "dependencies": {
-    "mongoose": "^4.11.12"
+    "mongoose": "^4.13.3"
   },
   "devDependencies": {
-    "eslint": "^4.7.2",
-    "eslint-config-airbnb-base": "^12.0.0",
-    "eslint-plugin-import": "^2.7.0"
+    "eslint": "^4.11.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0"
   }
 }
